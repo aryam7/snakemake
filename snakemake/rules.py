@@ -719,7 +719,8 @@ class Rule:
                     is_unpack=is_unpack,
                     **aux_params
                 )
-                if apply_default_remote:
+                # incomplete items will already have the default remote prefix
+                if apply_default_remote and not incomplete:
                     item = self.apply_default_remote(item)
 
             if is_unpack and not incomplete:
